@@ -6,7 +6,7 @@
 /*   By: ylamsiah <ylamsiah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:57:48 by ylamsiah          #+#    #+#             */
-/*   Updated: 2023/03/17 14:31:00 by ylamsiah         ###   ########.fr       */
+/*   Updated: 2023/03/19 02:41:43 by ylamsiah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ void	ft_server(int sig, siginfo_t *siginfo, void *str)
 	static char	s;
 
 	(void)str;
-	if (cli_pid && cli_pid != siginfo->si_pid)
+	if (cli_pid != siginfo->si_pid)
 	{
 		i = 0;
 		s = 0;
+		cli_pid = siginfo->si_pid;
 	}
 	i++;
 	s = s << 1 | (sig - SIGUSR1);
@@ -32,7 +33,6 @@ void	ft_server(int sig, siginfo_t *siginfo, void *str)
 		s = 0;
 		i = 0;
 	}
-	cli_pid = siginfo->si_pid;
 }
 
 int	main(void)
