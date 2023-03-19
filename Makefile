@@ -38,3 +38,5 @@ fclean:
 	$(RM) $(NAME_CLI) $(NAME_SER) $(NAME_CLI_BONUS) $(NAME_SER_BONUS)
 
 re: fclean all bonus
+
+.PHONY: all bonus re fclean
