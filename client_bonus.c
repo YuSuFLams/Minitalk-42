@@ -6,13 +6,13 @@
 /*   By: ylamsiah <ylamsiah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:54:52 by ylamsiah          #+#    #+#             */
-/*   Updated: 2023/03/20 03:24:09 by ylamsiah         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:44:13 by ylamsiah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-void	send_char(pid_t pid, char s)
+void	send_char_b(pid_t pid, char s)
 {
 	int	i;
 
@@ -48,8 +48,8 @@ int	main(int ac, char **str)
 			{
 				s = str[2];
 				while (*s)
-					send_char(pid, *s++);
-				send_char(pid, 0);
+					send_char_b(pid, *s++);
+				send_char_b(pid, 0);
 			}
 			else
 				ft_putstr("\033[91mThe server PID is Invalid.\n\033[0m");
