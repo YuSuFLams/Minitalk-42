@@ -4,39 +4,57 @@ NAME_CLI=client
 NAME_SER_BONUS=server_bonus
 NAME_CLI_BONUS=client_bonus
 
-SERVER=server.c
-CLIENT=client.c
-
-SERVER_BONUS=server_bonus.c
-CLIENT_BONUS=client_bonus.c
-
-M_HEADER = minitalk.h
-B_HEADER = minitalk_bonus.h
-
-GSRC= minitalk_utils.c
-
-CFLAGS = -Wall -Werror -Wextra
-
 CC = cc
 
 RM = rm -rf
 
-all: $(NAME_CLI) $(NAME_SER)
+CFLAGS	= -Wall -Wextra -Werror
 
-$(NAME_CLI) : $(CLIENT) $(M_HEADER) $(GSRC)
-		$(CC) $(CFLAGS) $(CLIENT) $(GSRC) -o $(NAME_CLI)
-$(NAME_SER) : $(SERVER) $(M_HEADER) $(GSRC) 
-		$(CC) $(CFLAGS) $(SERVER) $(GSRC) -o $(NAME_SER)
+SRCS = client.c server.c minitalk_utils.c
+
+SRCS_BONUS = client_bonus.c server_bonus.c minitalk_utils.c
+
+OBJS = $(SRCS:.c=.o)
+
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
+all: $(NAME_CLI) $(NAME_SER)
 
 bonus: $(NAME_CLI_BONUS) $(NAME_SER_BONUS)
 
-$(NAME_CLI_BONUS) : $(CLIENT_BONUS) $(B_HEADER) $(GSRC)
-		$(CC) $(CFLAGS) $(CLIENT_BONUS) $(GSRC) -o $(NAME_CLI_BONUS)
-$(NAME_SER_BONUS) : $(SERVER_BONUS) $(B_HEADER) $(GSRC)
-		$(CC) $(CFLAGS) $(SERVER_BONUS) $(GSRC) -o $(NAME_SER_BONUS)
-fclean:
-	$(RM) $(NAME_CLI) $(NAME_SER) $(NAME_CLI_BONUS) $(NAME_SER_BONUS)
+$(NAME_CLI): client.o minitalk_utils.o
+	$(CC) $(CFLAGS) $^ -o $@
 
-re: fclean all bonus
+$(NAME_SER): server.o minitalk_utils.o
+	$(CC) $(CFLAGS) $^ -o $@
 
-.PHONY: all bonus re fclean
+$(NAME_CLI_BONUS): client_bonus.o minitalk_utils.o
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(NAME_SER_BONUS): server_bonus.o minitalk_utils.o
+	$(CC) $(CFLAGS) $^ -o $@
+
+client.o: client.c minitalk.h
+	@$(CC) $(CFLAGS) -o $@ -c $<
+
+minitalk_utils.o: minitalk_utils.c minitalk.h
+	@$(CC) $(CFLAGS) -o $@ -c $<
+
+server.o: server.c minitalk.h
+	@$(CC) $(CFLAGS) -o $@ -c $<
+
+client_bonus.o: client_bonus.c minitalk_bonus.h
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+server_bonus.o: server_bonus.c minitalk_bonus.h
+	@$(CC) $(CFLAGS) -o $@ -c $<
+
+clean:
+	$(RM) *.o
+
+fclean: clean
+	$(RM) *.o $(NAME_CLI) $(NAME_SER) $(NAME_CLI_BONUS) $(NAME_SER_BONUS)
+
+re: fclean all
+
+.PHONY: all clean fclean re bonus

@@ -6,7 +6,7 @@
 /*   By: ylamsiah <ylamsiah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:40:12 by ylamsiah          #+#    #+#             */
-/*   Updated: 2023/03/20 02:40:57 by ylamsiah         ###   ########.fr       */
+/*   Updated: 2023/03/20 18:01:13 by ylamsiah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <signal.h>
+# include  <signal.h>
 
 void	ft_putstr(char *s);
 void	ft_putchar(char c);
