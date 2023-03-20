@@ -25,7 +25,7 @@ all: $(NAME_CLI) $(NAME_SER)
 
 $(NAME_CLI) : $(CLIENT) $(M_HEADER) $(GSRC)
 		$(CC) $(CFLAGS) $(CLIENT) $(GSRC) -o $(NAME_CLI)
-$(NAME_SER) : $(SERVER) $(M_HEADER) $(GSRC)
+$(NAME_SER) : $(SERVER) $(M_HEADER) $(GSRC) 
 		$(CC) $(CFLAGS) $(SERVER) $(GSRC) -o $(NAME_SER)
 
 bonus: $(NAME_CLI_BONUS) $(NAME_SER_BONUS)
