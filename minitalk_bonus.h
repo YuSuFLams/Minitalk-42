@@ -6,7 +6,7 @@
 /*   By: ylamsiah <ylamsiah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:39:43 by ylamsiah          #+#    #+#             */
-/*   Updated: 2023/03/19 02:43:50 by ylamsiah         ###   ########.fr       */
+/*   Updated: 2023/03/20 02:41:17 by ylamsiah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	ft_putstr(char *s);
 void	ft_putchar(char c);
 int		ft_atoi(const char *s);
 void	ft_putnbr(int nbr);
+int		is_all_digit(char *s);
 
 #endif

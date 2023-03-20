@@ -6,7 +6,7 @@
 /*   By: ylamsiah <ylamsiah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:48:13 by ylamsiah          #+#    #+#             */
-/*   Updated: 2023/03/19 02:40:06 by ylamsiah         ###   ########.fr       */
+/*   Updated: 2023/03/20 03:18:08 by ylamsiah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,20 @@ int	main(int ac, char **str)
 
 	if (ac == 3)
 	{
-		pid = (pid_t)ft_atoi(str[1]);
-		if (pid > 0)
+		if (is_all_digit(str[1]) == 1)
 		{
-			s = str[2];
-			while (*s)
-				send_char(pid, *s++);
+			pid = (pid_t)ft_atoi(str[1]);
+			if (pid > 0)
+			{
+				s = str[2];
+				while (*s)
+					send_char(pid, *s++);
+			}
+			else
+				ft_putstr("\033[91mThe server PID is Invalid.\n\033[0m");
 		}
 		else
-			ft_putstr("\033[91mThe server pid is Invalid.\n\033[0m");
+			ft_putstr("\033[91mThe PID contains not just numbers.\n\033[0m");
 	}
 	else
 		ft_putstr("\033[91mError: Try Agin.\n\033[0m");

@@ -6,13 +6,13 @@
 /*   By: ylamsiah <ylamsiah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:04:14 by ylamsiah          #+#    #+#             */
-/*   Updated: 2023/03/20 02:29:37 by ylamsiah         ###   ########.fr       */
+/*   Updated: 2023/03/20 03:31:42 by ylamsiah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-void	ft_server(int sig, siginfo_t *siginfo, void *str)
+void	ft_server_b(int sig, siginfo_t *siginfo, void *str)
 {
 	static int	i;
 	static int	cli_pid;
@@ -47,7 +47,7 @@ int	main(void)
 	ft_putnbr(pid);
 	ft_putchar('\n');
 	s_usr.sa_flags = SA_SIGINFO;
-	s_usr.sa_sigaction = ft_server;
+	s_usr.sa_sigaction = ft_server_b;
 	sigaction(SIGUSR1, &s_usr, NULL);
 	sigaction(SIGUSR2, &s_usr, NULL);
 	while (1)

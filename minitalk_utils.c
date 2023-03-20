@@ -6,7 +6,7 @@
 /*   By: ylamsiah <ylamsiah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 13:38:43 by ylamsiah          #+#    #+#             */
-/*   Updated: 2023/03/19 02:40:21 by ylamsiah         ###   ########.fr       */
+/*   Updated: 2023/03/20 03:43:29 by ylamsiah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,20 @@ void	ft_putnbr(int nbr)
 		ft_putnbr(n / 10);
 		ft_putnbr(n % 10);
 	}
+}
+
+int	is_all_digit(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (*(s + i) == '-' || *(s + i) == '+')
+		i++;
+	while (*(s + i))
+	{
+		if (*(s + i) < '0' || *(s + i) > '9')
+			return (0);
+		i++;
+	}
+	return (1);
 }
