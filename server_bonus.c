@@ -6,7 +6,7 @@
 /*   By: ylamsiah <ylamsiah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 14:04:14 by ylamsiah          #+#    #+#             */
-/*   Updated: 2023/03/19 02:41:52 by ylamsiah         ###   ########.fr       */
+/*   Updated: 2023/03/20 02:29:37 by ylamsiah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void	ft_server(int sig, siginfo_t *siginfo, void *str)
 	{
 		i = 0;
 		s = 0;
-		if (cli_pid != 0)
-			kill(cli_pid, SIGKILL);
 		cli_pid = siginfo->si_pid;
 	}
 	i++;
