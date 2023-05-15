@@ -34,20 +34,8 @@ $(NAME_CLI_BONUS): client_bonus.o minitalk_utils.o
 $(NAME_SER_BONUS): server_bonus.o minitalk_utils.o
 	@$(CC) $(CFLAGS) $^ -o $@
 
-client.o: client.c minitalk.h
-	@$(CC) $(CFLAGS) -o $@ -c $<
-
-minitalk_utils.o: minitalk_utils.c minitalk.h
-	@$(CC) $(CFLAGS) -o $@ -c $<
-
-server.o: server.c minitalk.h
-	@$(CC) $(CFLAGS) -o $@ -c $<
-
-client_bonus.o: client_bonus.c minitalk_bonus.h
-	@$(CC) $(CFLAGS) -o $@ -c $<
-
-server_bonus.o: server_bonus.c minitalk_bonus.h
-	@$(CC) $(CFLAGS) -o $@ -c $<
+%.o: %.c minitalk.h
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@$(RM) *.o
