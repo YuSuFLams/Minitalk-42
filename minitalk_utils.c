@@ -73,7 +73,7 @@ int	is_all_digit(char *s)
 
 	i = 0;
 	if (*(s + i) == '+')
-		return (0);
+		i++;
 	if (*(s + i) == '-')
 		i++;
 	while (*(s + i))
